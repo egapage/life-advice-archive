@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Project
 
 React repo for the Life Advice Archive.
 
