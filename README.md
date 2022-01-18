@@ -5,7 +5,7 @@ React repo for the Life Advice Archive.
 ## Stack
 
 **Frontend**
-- Create React App
+- Create React App (Typescript)
 - Chakra UI
 - Framer Motion
 
