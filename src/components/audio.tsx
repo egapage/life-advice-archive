@@ -22,6 +22,7 @@ const Audio = ({ audioUrl, pubDate, title, unix, description, duration }: Compon
     const [audioTitle, setAudioTitle] = useState("")
     const [audioDescription, setAudioDescription] = useState("")
     const [audioDuration, setAudioDuration] = useState(0)
+    const [audioDate, setAudioDate] = useState("")
 
     useEffect(() => {
         if (unix !== audioUnix) {
@@ -36,6 +37,7 @@ const Audio = ({ audioUrl, pubDate, title, unix, description, duration }: Compon
         setAudioTitle(title)
         setAudioDescription(description)
         setAudioDuration(duration)
+        setAudioDate(pubDate)
         await new Promise(resolve => setTimeout(resolve, 200))
         setPlayerClass("show")
     }

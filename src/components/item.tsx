@@ -16,7 +16,7 @@ interface ComponentProps {
     title: string,
     description: string,
     tags: [],
-    unix: string,
+    unix: number,
     pubDate: any,
     index: number,
     duration: number

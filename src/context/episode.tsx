@@ -8,12 +8,12 @@ interface IEpisode {
 	duration: number;
 }
 
-interface EpisodeContext {
+interface IEpisodeContext {
 	episode: IEpisode;
 	setEpisode: (state: IEpisode) => void;
 }
 
-export const EpisodeContext = createContext<EpisodeContext | null>(null);
+export const EpisodeContext = createContext<IEpisodeContext | null>(null);
 
 export const EpisodeProvider: React.FC<React.ReactNode> = ({ children }) => {
 

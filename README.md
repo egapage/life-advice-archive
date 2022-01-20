@@ -14,6 +14,7 @@ React repo for the Life Advice Archive.
 - Express
 - Firebase
 - Playwright
+- AWS Amplify
 
 ### Automation
 

@@ -1,6 +1,5 @@
 import { ICast } from '../interfaces'
 import Item from './item'
-
 import {
     List
 } from '@chakra-ui/react'
@@ -9,7 +8,7 @@ interface ComponentProps {
     casts: ICast[]
 }
 
-const items = ({casts}: ComponentProps) => {
+const Items = ({casts}: ComponentProps) => {
 
     const array = casts.map((cast:any, index:number)=> {
         return <Item 
@@ -29,4 +28,4 @@ const items = ({casts}: ComponentProps) => {
     );
 }
 
-export default items;
+export default Items;
