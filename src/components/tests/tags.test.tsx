@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import { render , screen} from '@testing-library/react';
-import Tags from './tags'
+import Tags from '../tags'
 
 test('renders tags', () => {
     render( <Tags 

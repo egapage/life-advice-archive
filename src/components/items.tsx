@@ -1,25 +1,25 @@
-import { ICast } from '../interfaces'
+import { IEpisode } from '../interfaces'
 import Item from './item'
 import {
     List
 } from '@chakra-ui/react'
 
 interface ComponentProps {
-    casts: ICast[]
+    episodes: IEpisode[]
 }
 
-const Items = ({casts}: ComponentProps) => {
+const Items = ({episodes}: ComponentProps) => {
 
-    const array = casts.map((cast:any, index:number)=> {
+    const array = episodes.map((episode:IEpisode, index:number)=> {
         return <Item 
-                    unix={cast.unix}
-                    description={cast.laDescription}
-                    tags={cast.tags}
-                    pubDate={cast.pubDate}
-                    title={cast.title}
+                    unix={episode.unix}
+                    description={episode.laDescription}
+                    tags={episode.tags}
+                    pubDate={episode.pubDate}
+                    title={episode.title}
                     index={index}
                     key={`${index}-item`}
-                    duration={cast.laDuration}
+                    duration={episode.laDuration}
                 />
     })
 

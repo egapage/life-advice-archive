@@ -12,14 +12,14 @@ const Player = () => {
         return null
     }
 
-    const {episode} = episode_context
-    const {unix, pubDate, title, description, duration} = episode
+    const {playerEpisode} = episode_context
+    const {unix, pubDate, title, description, duration} = playerEpisode
     
     if (unix > 0) {
         handleListen(unix)
     }
     
-    async function handleListen(unix:any) {
+    async function handleListen(unix:number) {
         try {
             const res = await api.get('/api/url/'+unix)
             const { data } = res

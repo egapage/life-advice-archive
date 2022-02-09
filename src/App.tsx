@@ -1,9 +1,9 @@
-import List from './components/list'
+import { EpisodeProvider } from './context/episode'
 import { Box, Container } from '@chakra-ui/react'
-import './App.css';
-import { EpisodeProvider } from './context/episode';
 import Player from './components/player'
 import Header from './components/header'
+import List from './components/list'
+import './App.css'
 
 function App() {
   return (

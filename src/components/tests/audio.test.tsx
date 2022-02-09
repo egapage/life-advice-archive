@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/extend-expect';
 import { render } from '@testing-library/react';
-import Audio from './audio'
+import Audio from '../audio'
 
 test('renders audio', () => {
     render( <Audio 

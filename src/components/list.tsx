@@ -1,50 +1,37 @@
 import Items from './items'
-import ReactPaginate from 'react-paginate';
-import { api } from '../utils/api';
+import ReactPaginate from 'react-paginate'
+import { api } from '../utils/api'
 import { useState, useEffect, Fragment } from 'react'
 import {
     Box,
     Skeleton,
     Text
 } from '@chakra-ui/react'
-import { ICast } from '../interfaces'
+import { IEpisode } from '../interfaces'
 
 const List = () => {
 
-    const [casts, setCasts] = useState<ICast[]>([])
+    const [episodes, setEpisodes] = useState<IEpisode[]>([])
     const [dataLoaded, setDataLoaded] = useState<boolean>(false)
     const [dataFailed, setDataFailed] = useState<boolean>(false)
 
     //items
-    const [itemOffset, setItemOffset] = useState(0);
-    const [endOffset, setEndOffset] = useState(0);
-    const [itemsPerPage, setItemsPerPage] = useState(10);
-    const [currentItems, setCurrentItems] = useState<ICast[]>([])
-    const [pageCount, setPageCount] = useState(0);
+    const [pageCount, setPageCount] = useState<number>(0);
 
     useEffect(() => {
-
-        const endOffset = itemOffset + itemsPerPage;
-        let casts_: any = casts.slice(itemOffset, endOffset)
-        setCurrentItems(casts_)
-        setPageCount(Math.ceil(casts.length / itemsPerPage))
-        setEndOffset(endOffset)
-
-    }, [itemOffset, casts])
-
-    useEffect(() => {
-        getData()
+        getData(1)
     }, [])
 
-    async function getData() {
+    async function getData(page: number) {
         try {
-            await new Promise(resolve => setTimeout(resolve, 1000))
-            const res = await api.get('/api')
-            const { data } = res
-            data.sort((a: any, b: any) => {
-                return new Date(b.unix).valueOf() - new Date(a.unix).valueOf()
-            })
-            setCasts(data)
+            const res = await api.get('/api/episodes/'+page)
+            const { data: {episodesData: {
+                episodes,
+                pageCount
+            }}} = res
+
+            setEpisodes(episodes)
+            setPageCount(pageCount)
             setDataLoaded(true)
         }
         catch (err) {
@@ -54,8 +41,7 @@ const List = () => {
     }
 
     const handlePageClick = (event: any) => {
-        const newOffset = (event.selected * itemsPerPage) % casts.length
-        setItemOffset(newOffset)
+        getData(event.selected+1)
     };
 
     return (
@@ -75,9 +61,8 @@ const List = () => {
                             />
                         </Box>
                         <Items
-                            casts={currentItems}
+                            episodes={episodes}
                         />
-
                     </Skeleton>
                     <Skeleton style={{ minHeight: '60px', marginTop: 20 }} isLoaded={dataLoaded}></Skeleton>
                     <Skeleton style={{ minHeight: '60px', marginTop: 20 }} isLoaded={dataLoaded}></Skeleton>

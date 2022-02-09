@@ -8,6 +8,7 @@ import {
 } from '@chakra-ui/react'
 
 import { EpisodeContext } from '../context/episode'
+import { ITag } from '../interfaces'
 import {useContext} from 'react'
 import dayjs from 'dayjs'
 import TagsComponent from './tags'
@@ -15,9 +16,9 @@ import TagsComponent from './tags'
 interface ComponentProps {
     title: string,
     description: string,
-    tags: [],
+    tags: ITag[],
     unix: number,
-    pubDate: any,
+    pubDate: string,
     index: number,
     duration: number
 }
@@ -27,7 +28,7 @@ const Item = ({ title, description, duration, tags, unix, pubDate, index }: Comp
     const episodeState = useContext(EpisodeContext)
 
     const handleClick = () => {
-        episodeState?.setEpisode({unix: Number(unix), pubDate: pubDate, title: title, description: description, duration: duration})
+        episodeState?.setPlayerEpisode({unix: Number(unix), pubDate: pubDate, title: title, description: description, duration: duration})
     }
 
     return (

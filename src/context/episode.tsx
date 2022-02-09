@@ -1,6 +1,6 @@
 import React, { useState, createContext } from 'react';
 
-interface IEpisode {
+interface IPlayerEpisode {
 	unix: number;
 	pubDate: string;
 	title: string;
@@ -8,16 +8,16 @@ interface IEpisode {
 	duration: number;
 }
 
-interface IEpisodeContext {
-	episode: IEpisode;
-	setEpisode: (state: IEpisode) => void;
+interface IPlayerEpisodeContext {
+	playerEpisode: IPlayerEpisode;
+	setPlayerEpisode: (state: IPlayerEpisode) => void;
 }
 
-export const EpisodeContext = createContext<IEpisodeContext | null>(null);
+export const EpisodeContext = createContext<IPlayerEpisodeContext | null>(null);
 
 export const EpisodeProvider: React.FC<React.ReactNode> = ({ children }) => {
 
-	const [episode, setEpisode] = useState({
+	const [playerEpisode, setPlayerEpisode] = useState({
 		unix: 0,
 		pubDate: "",
 		title: "",
@@ -26,7 +26,7 @@ export const EpisodeProvider: React.FC<React.ReactNode> = ({ children }) => {
 	});
 
 	return (
-		<EpisodeContext.Provider value={{ episode, setEpisode }}>
+		<EpisodeContext.Provider value={{ playerEpisode, setPlayerEpisode }}>
 			{children}
 		</EpisodeContext.Provider>
 	);

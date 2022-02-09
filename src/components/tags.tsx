@@ -3,18 +3,15 @@ import {
     Tag
   } from '@chakra-ui/react'
 
-interface ComponentProps {
-    tags: ITag[]
-}
+import { ITag } from '../interfaces'
 
-interface ITag {
-    label: string,
-    value: string
+export interface ComponentProps {
+    tags: ITag[]
 }
 
 const TagsComponent = ({tags}:ComponentProps) => {
 
-    const tagArray = tags.map((tag:any, index:number) => {
+    const tagArray = tags.map((tag:ITag, index:number) => {
         return <Tag size="sm" variant='outline' style={{marginRight:10, marginTop:10}} key={`${index}-tag`}>{tag.label}</Tag>
     })
 
