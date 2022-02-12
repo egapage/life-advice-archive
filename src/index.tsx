@@ -7,7 +7,11 @@ const theme = extendTheme({
   fonts: {
     heading: "monospace",
     body: "monospace"
-
+  },
+  colors: {
+    gray: {
+      300: "#dadada"
+    }
   },
   styles: {
     global: {

@@ -26,13 +26,15 @@ interface ComponentProps {
 const Item = ({ title, description, duration, tags, unix, pubDate, index }: ComponentProps) => {
 
     const episodeState = useContext(EpisodeContext)
+    let backgroundColor = "#23252f"
+    let fontColor = "#dadada"
 
     const handleClick = () => {
         episodeState?.setPlayerEpisode({unix: Number(unix), pubDate: pubDate, title: title, description: description, duration: duration})
     }
 
     return (
-        <ListItem style={{ backgroundColor: "#23252f", padding: 20 }} key={`${index}-item`}>
+        <ListItem style={{ backgroundColor: backgroundColor, color: fontColor, padding: 20 }} key={`${index}-item`}>
             <Flex>
                 <Box w='70%'>
                     {description ? 
